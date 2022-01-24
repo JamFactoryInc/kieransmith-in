@@ -140,7 +140,7 @@ function ProjectCard({ description, title, link, tags, show, githubLink }) {
   }
     return (
       <div className="project-tile">
-        <div className='card' onClick={(show ? _ => navigate(link): () => { })}>
+        <div className='card' onClick={(show ? () => navigate(link): () => { })}>
           <div >
             <h3 className="project-title">
               {title}
@@ -155,7 +155,7 @@ function ProjectCard({ description, title, link, tags, show, githubLink }) {
         <div className='tags'>
           {
             tags.map((tag, i) => {
-              return (<span key={i} className='tag' style={show ? {} : { background: 'gray' }}>{tag}</span>)
+              return (<span key={i} onClick={() => { navigate(link + '#' + tag.toLowerCase()) }} className={'tag' + (show ? '' : ' disabled')} style={show ? {} : { background: 'gray' }}>{tag}</span>)
             })
           }
         </div>

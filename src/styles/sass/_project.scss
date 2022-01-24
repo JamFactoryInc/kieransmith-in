@@ -24,12 +24,19 @@
         width: 90%;
         margin-left: 10%;
     }
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: $border-rad;
+        box-shadow: 2px 2px 10px black;
+    }
     h3 {
         margin: 0;
         font-size: 90%;
     }
     p {
         font-size: 50%;
+        white-space: pre-wrap;
     }
 }
 

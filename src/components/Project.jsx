@@ -3,11 +3,9 @@ import React, { useEffect, useState, Component} from 'react';
 import NavBar from './Nav'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { faGithubSquare } from '@fortawesome/free-brands-svg-icons'
-import { ScrollCache } from '../App'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import js from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
 import { vscDarkPlus as sourceTheme } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import useFetch from 'react-fetch-hook';
 import Spinner from './Spinner';
 
 SyntaxHighlighter.registerLanguage('javascript', js);
@@ -21,7 +19,7 @@ function BackButton() {
 
 function Project(props) {
     useEffect(() => {
-        ScrollCache();
+        //ScrollCache();
     }, []);
 
         return (
@@ -44,7 +42,7 @@ function Header({ title, subtitle}) {
 
 function Section(props) {
     return (
-        <div className='project-section'>
+        <div className='project-section' id={props.technology ? props.technology : undefined}>
             <h3>{props.title}</h3>
             <p>{props.content}</p>
             {props.children}
@@ -99,8 +97,9 @@ function Code(props){
             setData(CodeBrowser.cachedContent[props.source])
         }
     };
-
-    fetchSourceCode();
+    useEffect(() => {
+        fetchSourceCode();
+    }, [props.source]);
 
     let loadedContent = <Spinner />
     if (data && data === CodeBrowser.cachedContent[props.source]) {

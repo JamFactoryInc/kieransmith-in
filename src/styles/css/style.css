@@ -20,11 +20,17 @@
     padding: 0;
     width: 90%;
     margin-left: 10%; }
+  .project-section img {
+    width: 100%;
+    height: auto;
+    border-radius: Min(2vh, 2vw);
+    box-shadow: 2px 2px 10px black; }
   .project-section h3 {
     margin: 0;
     font-size: 90%; }
   .project-section p {
-    font-size: 50%; }
+    font-size: 50%;
+    white-space: pre-wrap; }
 
 .code-block {
   border-radius: 0 0 Min(2vh, 2vw) Min(2vh, 2vw);
@@ -239,13 +245,19 @@ pre {
           padding: 1% 2%;
           margin: 1% 1.5% 1% 0;
           color: #080808;
-          font-weight: 700;
-          border-radius: 1000px; }
+          font-weight: 500;
+          border-radius: 1000px;
+          transition: transform 0.2s, background-color 0.2s; }
           @media (orientation: portrait) {
             #projects #gallery .project-tile .tags .tag {
               height: 1em;
               padding: 2.5%;
               margin-bottom: 3%; } }
+          #projects #gallery .project-tile .tags .tag:not(.disabled) {
+            cursor: pointer; }
+            #projects #gallery .project-tile .tags .tag:not(.disabled):hover {
+              transform: scale(1.05);
+              background-color: #dd3b63; }
 
 ::-webkit-scrollbar {
   display: none; }
