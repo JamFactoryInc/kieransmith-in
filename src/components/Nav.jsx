@@ -1,5 +1,4 @@
-import Icons from './Ico'
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function NavBar({ links }) {
@@ -13,7 +12,6 @@ function NavBar({ links }) {
 }
 
 function NavButton(props) {
-    Icons.icons[props.title] = { icon: null, phaseOne: '#nav-button-' + props.title, phaseTwo: '#nav-button-' + props.title + '-two' }
     let inside = (
             <svg viewBox='0 0 512 512'>
             <FontAwesomeIcon icon={props.icon} />
@@ -24,7 +22,7 @@ function NavButton(props) {
         )
     }
     return (
-        <Link to={props.link}>{inside}</Link>
+        <Link onClick={() => { if (window.location.pathname === props.link) window.scroll(0, 0);}} to={props.link}>{inside}</Link>
     )
 }
 

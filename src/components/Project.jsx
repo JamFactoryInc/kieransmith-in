@@ -89,7 +89,6 @@ CodeBrowser.cachedContent = {};
 function Code(props){
     const [collapsed, setCollapsed] = useState(true);
     const [data, setData] = useState(undefined);
-    //const { isLoading, data } = useFetch(props.source, {formatter: (response) => response.text()});
     const fetchSourceCode = async () => {
         if (!CodeBrowser.cachedContent[props.source]) {
             const res = await fetch(props.source);
