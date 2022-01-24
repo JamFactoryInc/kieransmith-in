@@ -1,0 +1,23 @@
+import json
+result = {
+    "participants": [
+        {
+          "name": "Alaina Back"
+        },
+        {
+          "name": "Mandy Smith"
+        }
+    ],
+    "messages" : [
+
+    ]
+    }
+for i in range(7):
+    with open(r'C:\Users\jam\Downloads\Alaina Back and Mandy Smith Messages.txt'.format(i + 1)) as file:
+        convo = json.loads(file.read())
+        for message in convo['messages']:
+            if 'call_duration' in message:
+                result["messages"].append(message)
+f = open(r"C:\Users\jam\Downloads\call_log.json", "w")
+f.write(json.dumps(result))
+f.close()

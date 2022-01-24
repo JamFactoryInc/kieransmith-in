@@ -1,0 +1,93 @@
+@import "vars";
+.project-page {
+    background-color: $m-dark-gray;
+}
+
+.project-header {
+    background-color: $dark-gray;
+}
+
+.project-section {
+    position: relative;
+    width: 80%;
+    @media (orientation: portrait) {
+        width: 90%;
+    }
+    height: auto;
+    margin: auto;
+    margin-top: 2%;
+    background-color: $dark-gray;
+    border-radius: $border-rad;
+    padding: 2%;
+    .project-section {
+        padding: 0;
+        width: 90%;
+        margin-left: 10%;
+    }
+    h3 {
+        margin: 0;
+        font-size: 90%;
+    }
+    p {
+        font-size: 50%;
+    }
+}
+
+.code-block {
+    border-radius: 0 0 $border-rad $border-rad;
+    margin-bottom: 1%;
+    &.collapsed {
+        height: 2in !important;
+        overflow: hidden !important;
+        transition: height 0.5s !important;
+    }
+    &:not(.collapsed) {
+        height: 500px;
+        overflow: scroll;
+        transition: height 0.5s !important;
+    }
+}
+
+pre {
+    margin: 0;
+    max-width: 100%;
+    font-size: 30%;
+    background-color: $gray !important;
+    pre {
+        margin: 0 !important;
+    }
+    code {
+        background-color: $gray !important;
+    }
+}
+
+.code-browser-tabs {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.code-browser-tab {
+    border-radius: $border-rad $border-rad 0 0;
+    width: 100%;
+    text-align: center;
+    background-color: $dark-gray;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 50%;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+    &:hover {
+        background-color: $medium-gray;
+    }
+    &.selected {
+        background-color: $gray;
+        color: white;
+        cursor: default;
+    }
+}

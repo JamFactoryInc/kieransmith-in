@@ -1,0 +1,36 @@
+@import "vars";
+.spinner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    svg {
+        height: 1in;
+        padding: 0.5in;
+        animation: rotate 1s linear infinite;
+        circle {
+            height: 1in;
+            stroke: $medium-gray;
+            stroke-linecap: round;
+            stroke-dasharray: 10, 180;
+            animation: speedupdown 2s linear infinite;
+        }
+    }
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes speedupdown {
+    0% {
+        stroke-dasharray: 10, 180;
+    }
+    50% {
+        stroke-dasharray: 100, 150;
+    }
+}
