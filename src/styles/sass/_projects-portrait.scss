@@ -1,0 +1,58 @@
+@import "vars";
+@media (orientation: portrait) {
+    #projects {
+        width: 95vw;
+        padding-bottom: $mobile-nav-height;
+        #gallery {
+            .project-tile {
+                width: 100%;
+                .exlink-arrow {
+                    color: $light-gray;
+                }
+                .card:not(.project-tile-github) {
+                    display: flex;
+                    flex-direction: column;
+                    background-color: $gray;
+                    border-radius: $border-rad;
+                    padding: 2.5%;
+                    height: 3em;
+                    transition: margin 0.1s, background-color 0.5s;
+                    color: $v-light-gray;
+                    a p {
+                        color: $light-gray;
+                    }
+                }
+                .project-tile-github {
+                    margin: 1% 0;
+                    background-color: $raspberry;
+                    color: $gray;
+                    border-radius: $border-rad;
+                    display: flex;
+                    height: 1em;
+                    display: flex !important;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-end;
+                    p {
+                        font-weight: 700;
+                        margin-left: 10%;
+                        flex-grow: 1;
+                        text-align: center;
+                    }
+                    svg {
+                        width: 10%;
+                    }
+                }
+                .tags {
+                    display: flex;
+                    flex-wrap: wrap;
+                    .tag {
+                        height: 1em;
+                        padding: 2.5%;
+                        margin-bottom: 3%;
+                    }
+                }
+            }
+        }
+    }
+}

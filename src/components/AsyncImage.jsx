@@ -29,11 +29,9 @@ function AsyncImage({ src, alt, style, width, height }) {
         fetchImage();
     }, []);
     if (img) {
-        return ( <
-            img src = { img }
+        return ( <img src = { img }
             style = { imageStyle }
-            alt = { imageAlt }
-            />
+            alt = { imageAlt }/>
         )
     }
     return ( <

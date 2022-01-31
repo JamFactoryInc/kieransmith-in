@@ -1,0 +1,102 @@
+@import "vars";
+$github-icon-size: 1.1em;
+$github-icon-offset: 47%;
+$github-icon-offset-inverse: calc((48% - #{$github-icon-offset})/2);
+@media (orientation: landscape) {
+    #projects #gallery {
+        .project-tile {
+            // makes the margin on the right and left of the flex box even
+            &:nth-child(2n + 1) {
+                margin-right: 2%;
+            }
+            .card:not(.project-tile-github) {
+                display: flex;
+                flex-direction: column;
+                background-color: $dark-gray;
+                border-radius: $border-rad;
+                padding: 2.5%;
+                height: 4em;
+                transition: margin 0.1s, background-color 0.5s;
+                color: $v-light-gray;
+                cursor: pointer;
+                a p {
+                    color: $light-gray;
+                }
+                &:hover {
+                    background-color: $gray;
+                    margin-top: -1%;
+                    margin-bottom: 1%;
+                    .exlink-arrow {
+                        color: $raspberry;
+                        transform: scale(1.1);
+                    }
+                    &~.project-tile-github {
+                        margin-top: calc(-#{$github-icon-size} - #{$github-icon-offset-inverse} - 0.5%);
+                    }
+                }
+            }
+            .project-tile-github {
+                position: absolute;
+                margin-top: calc(-#{$github-icon-size} - #{$github-icon-offset-inverse});
+                margin-left: calc(#{$github-icon-offset} - #{$github-icon-size} + #{$github-icon-offset-inverse});
+                color: $dark-gray;
+                background-color: $medium-gray;
+                border-radius: 0.5em 0.5em $border-rad 0.5em;
+                height: $github-icon-size;
+                width: $github-icon-size;
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-end;
+                overflow: hidden;
+                transition: margin-left 0.5s, width 0.5s, color 0.3s, background-color 0.3s, margin-top 0.1s, border-radius 0.5s;
+                &:hover {
+                    border-radius: $border-rad;
+                    transition: margin-left 0.5s, width 0.5s, color 0.3s, border-radius 0.5s, background-color 0.3s, margin-top 0.1s;
+                    color: $gray;
+                    background-color: $raspberry;
+                    width: $github-icon-offset;
+                    margin-left: $github-icon-offset-inverse;
+                    svg {
+                        transition: background-color 0.3s, border-radius 0.5s;
+                        background-color: $raspberry;
+                        border-radius: $border-rad;
+                    }
+                    p {
+                        color: $dark-gray;
+                    }
+                }
+                svg {
+                    font-size: $github-icon-size;
+                    transition: background-color 0.3s, border-radius 0.5s;
+                    z-index: 1;
+                    background-color: $medium-gray;
+                    justify-self: center;
+                    width: 1em;
+                    height: 1em;
+                    border-radius: 0.5em 0.5em $border-rad 0.5em;
+                    overflow: hidden !important;
+                    transform: scale(0.9);
+                    path {
+                        transform: scale(1.2) translate(-8%, -8%);
+                    }
+                }
+                p {
+                    height: 1em;
+                    position: absolute;
+                    left: 0;
+                    margin: 0;
+                    height: 100%;
+                    padding: 0 1ch;
+                    color: $medium-gray;
+                    z-index: 0;
+                    font-weight: 500;
+                    display: flex;
+                    align-items: center;
+                    white-space: nowrap;
+                    align-self: center;
+                    font-size: 20pt;
+                }
+            }
+        }
+    }
+}

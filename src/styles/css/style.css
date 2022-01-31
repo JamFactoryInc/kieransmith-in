@@ -91,10 +91,6 @@ pre {
   margin-top: 20px;
   width: 80vw;
   margin: auto; }
-  @media (orientation: portrait) {
-    #projects {
-      width: 95vw;
-      padding-bottom: 6vh; } }
   #projects h3 {
     width: 100%;
     position: relative;
@@ -112,13 +108,11 @@ pre {
       margin: 0;
       padding: 0;
       text-align: left;
-      font-weight: 700;
       font-size: 50%;
       color: #AAA;
       transition: color 0.2s; }
     #projects #gallery .project-tile {
       width: 48%;
-      margin-right: 2%;
       margin-bottom: 2%; }
       #projects #gallery .project-tile .exlink-arrow {
         position: absolute;
@@ -126,112 +120,6 @@ pre {
         height: 100%;
         color: #181818;
         transition: color 0.2s, transform 0.2s; }
-        @media (orientation: portrait) {
-          #projects #gallery .project-tile .exlink-arrow {
-            color: #555; } }
-      @media (orientation: landscape) {
-        #projects #gallery .project-tile .card:not(.project-tile-github) {
-          display: flex;
-          flex-direction: column;
-          background-color: #111;
-          border-radius: Min(2vh, 2vw);
-          padding: 2.5%;
-          height: 4em;
-          transition: margin 0.1s, background-color 0.5s;
-          color: #AAA;
-          cursor: pointer; }
-          #projects #gallery .project-tile .card:not(.project-tile-github) a p {
-            color: #555; }
-          #projects #gallery .project-tile .card:not(.project-tile-github):hover {
-            background-color: #181818;
-            margin-top: -1%;
-            margin-bottom: 1%; }
-            #projects #gallery .project-tile .card:not(.project-tile-github):hover .exlink-arrow {
-              color: #d12c55;
-              transform: scale(1.1); }
-            #projects #gallery .project-tile .card:not(.project-tile-github):hover ~ .project-tile-github {
-              margin-top: calc(-1.2em - 1%); } }
-      @media (orientation: portrait) {
-        #projects #gallery .project-tile .card:not(.project-tile-github) {
-          display: flex;
-          flex-direction: column;
-          background-color: #181818;
-          border-radius: Min(2vh, 2vw);
-          padding: 2.5%;
-          height: 3em;
-          transition: margin 0.1s, background-color 0.5s;
-          color: #AAA; }
-          #projects #gallery .project-tile .card:not(.project-tile-github) a p {
-            color: #555; }
-        #projects #gallery .project-tile .project-tile-github {
-          margin: 1% 0;
-          background-color: #d12c55;
-          color: #181818;
-          border-radius: Min(2vh, 2vw);
-          display: flex;
-          height: 1em;
-          display: flex !important;
-          flex-direction: row;
-          align-items: center;
-          justify-content: flex-end; }
-          #projects #gallery .project-tile .project-tile-github p {
-            font-weight: 700;
-            margin-left: 10%;
-            flex-grow: 1;
-            text-align: center; }
-          #projects #gallery .project-tile .project-tile-github svg {
-            width: 10%; } }
-      @media (orientation: landscape) {
-        #projects #gallery .project-tile .project-tile-github {
-          position: absolute;
-          margin-top: -1.3em;
-          margin-left: calc(46% - 1em);
-          background-color: #222;
-          border-radius: 1000px;
-          color: #555;
-          padding: 0.1em;
-          height: 1em;
-          width: 1em;
-          display: flex;
-          align-items: flex-end;
-          justify-content: flex-end;
-          overflow: hidden;
-          transition: margin-left 0.5s, width 0.5s, color 0.3s, background-color 0.3s, margin-top 0.1s; }
-          #projects #gallery .project-tile .project-tile-github:hover {
-            transition: margin-left 0.5s, width 0.5s, color 0.3s, background-color 0.3s, margin-top 0.1s;
-            background-color: #d12c55;
-            color: #181818;
-            width: 44.5%;
-            margin-left: 1.5%; }
-            #projects #gallery .project-tile .project-tile-github:hover svg {
-              transition: background-color 0.3s;
-              background-color: #d12c55; }
-            #projects #gallery .project-tile .project-tile-github:hover p {
-              color: #111; }
-          #projects #gallery .project-tile .project-tile-github svg {
-            transition: background-color 0.3s;
-            z-index: 1;
-            border-radius: 1000px;
-            background-color: #222;
-            justify-self: center; }
-          #projects #gallery .project-tile .project-tile-github p {
-            height: 1em;
-            position: absolute;
-            left: 0;
-            margin: 0;
-            height: 100%;
-            padding: 0 1ch;
-            color: #222;
-            z-index: 0;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-            align-self: center;
-            font-size: 20pt; } }
-      @media (orientation: portrait) {
-        #projects #gallery .project-tile {
-          width: 100%; } }
       #projects #gallery .project-tile img {
         display: none; }
       #projects #gallery .project-tile p {
@@ -247,17 +135,137 @@ pre {
           color: #080808;
           font-weight: 500;
           border-radius: 1000px;
-          transition: transform 0.2s, background-color 0.2s; }
-          @media (orientation: portrait) {
-            #projects #gallery .project-tile .tags .tag {
-              height: 1em;
-              padding: 2.5%;
-              margin-bottom: 3%; } }
+          transition: transform 0.2s, background-color 0.2s; }
           #projects #gallery .project-tile .tags .tag:not(.disabled) {
             cursor: pointer; }
             #projects #gallery .project-tile .tags .tag:not(.disabled):hover {
               transform: scale(1.05);
               background-color: #dd3b63; }
+
+@media (orientation: portrait) {
+  #projects {
+    width: 95vw;
+    padding-bottom: 6vh; }
+    #projects #gallery .project-tile {
+      width: 100%; }
+      #projects #gallery .project-tile .exlink-arrow {
+        color: #555; }
+      #projects #gallery .project-tile .card:not(.project-tile-github) {
+        display: flex;
+        flex-direction: column;
+        background-color: #181818;
+        border-radius: Min(2vh, 2vw);
+        padding: 2.5%;
+        height: 3em;
+        transition: margin 0.1s, background-color 0.5s;
+        color: #AAA; }
+        #projects #gallery .project-tile .card:not(.project-tile-github) a p {
+          color: #555; }
+      #projects #gallery .project-tile .project-tile-github {
+        margin: 1% 0;
+        background-color: #d12c55;
+        color: #181818;
+        border-radius: Min(2vh, 2vw);
+        display: flex;
+        height: 1em;
+        display: flex !important;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end; }
+        #projects #gallery .project-tile .project-tile-github p {
+          font-weight: 700;
+          margin-left: 10%;
+          flex-grow: 1;
+          text-align: center; }
+        #projects #gallery .project-tile .project-tile-github svg {
+          width: 10%; }
+      #projects #gallery .project-tile .tags {
+        display: flex;
+        flex-wrap: wrap; }
+        #projects #gallery .project-tile .tags .tag {
+          height: 1em;
+          padding: 2.5%;
+          margin-bottom: 3%; } }
+
+@media (orientation: landscape) {
+  #projects #gallery .project-tile:nth-child(2n + 1) {
+    margin-right: 2%; }
+  #projects #gallery .project-tile .card:not(.project-tile-github) {
+    display: flex;
+    flex-direction: column;
+    background-color: #111;
+    border-radius: Min(2vh, 2vw);
+    padding: 2.5%;
+    height: 4em;
+    transition: margin 0.1s, background-color 0.5s;
+    color: #AAA;
+    cursor: pointer; }
+    #projects #gallery .project-tile .card:not(.project-tile-github) a p {
+      color: #555; }
+    #projects #gallery .project-tile .card:not(.project-tile-github):hover {
+      background-color: #181818;
+      margin-top: -1%;
+      margin-bottom: 1%; }
+      #projects #gallery .project-tile .card:not(.project-tile-github):hover .exlink-arrow {
+        color: #d12c55;
+        transform: scale(1.1); }
+      #projects #gallery .project-tile .card:not(.project-tile-github):hover ~ .project-tile-github {
+        margin-top: calc(-1.1em - calc((48% - 47%)/2) - 0.5%); }
+  #projects #gallery .project-tile .project-tile-github {
+    position: absolute;
+    margin-top: calc(-1.1em - calc((48% - 47%)/2));
+    margin-left: calc(47% - 1.1em + calc((48% - 47%)/2));
+    color: #111;
+    background-color: #222;
+    border-radius: 0.5em 0.5em Min(2vh, 2vw) 0.5em;
+    height: 1.1em;
+    width: 1.1em;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    overflow: hidden;
+    transition: margin-left 0.5s, width 0.5s, color 0.3s, background-color 0.3s, margin-top 0.1s, border-radius 0.5s; }
+    #projects #gallery .project-tile .project-tile-github:hover {
+      border-radius: Min(2vh, 2vw);
+      transition: margin-left 0.5s, width 0.5s, color 0.3s, border-radius 0.5s, background-color 0.3s, margin-top 0.1s;
+      color: #181818;
+      background-color: #d12c55;
+      width: 47%;
+      margin-left: calc((48% - 47%)/2); }
+      #projects #gallery .project-tile .project-tile-github:hover svg {
+        transition: background-color 0.3s, border-radius 0.5s;
+        background-color: #d12c55;
+        border-radius: Min(2vh, 2vw); }
+      #projects #gallery .project-tile .project-tile-github:hover p {
+        color: #111; }
+    #projects #gallery .project-tile .project-tile-github svg {
+      font-size: 1.1em;
+      transition: background-color 0.3s, border-radius 0.5s;
+      z-index: 1;
+      background-color: #222;
+      justify-self: center;
+      width: 1em;
+      height: 1em;
+      border-radius: 0.5em 0.5em Min(2vh, 2vw) 0.5em;
+      overflow: hidden !important;
+      transform: scale(0.9); }
+      #projects #gallery .project-tile .project-tile-github svg path {
+        transform: scale(1.2) translate(-8%, -8%); }
+    #projects #gallery .project-tile .project-tile-github p {
+      height: 1em;
+      position: absolute;
+      left: 0;
+      margin: 0;
+      height: 100%;
+      padding: 0 1ch;
+      color: #222;
+      z-index: 0;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      align-self: center;
+      font-size: 20pt; } }
 
 ::-webkit-scrollbar {
   display: none; }
@@ -266,6 +274,9 @@ pre {
   color: #AAA;
   font-family: Jura, Roboto, sans-serif;
   font-size: Min(9vw, 7vh); }
+
+*:focus {
+  filter: drop-shadow(0 0 4px white); }
 
 i {
   color: #d12c55;
@@ -286,11 +297,60 @@ h1, h2 {
 h2 {
   margin-top: calc(40vh + 1.5em);
   font-size: 70%;
-  font-weight: 500; }
+  font-weight: 500;
+  width: 100%;
+  overflow: hidden; }
+
+section {
+  width: 100%;
+  background-color: #111;
+  border-radius: Min(2vh, 2vw);
+  display: flex; }
+  section#links .link {
+    position: relative;
+    padding: 1em;
+    height: 1em;
+    font-size: 50%;
+    color: #111;
+    background-color: #d12c55;
+    border-radius: Min(2vh, 2vw);
+    overflow: hidden;
+    z-index: 1;
+    font-weight: 500;
+    margin: 2%;
+    flex-grow: 1; }
+    section#links .link:hover {
+      background-color: #dd3b63; }
+      section#links .link:hover svg {
+        transform: translate(40%, -55%) scale(1.2); }
+    section#links .link svg {
+      transition: transform .3s;
+      float: right;
+      position: relative;
+      color: #ad2547;
+      font-size: 500%;
+      z-index: -1;
+      transform: translate(40%, -55%); }
+
+.tagline {
+  margin-left: 0;
+  animation: fading-tagline 5s infinite linear; }
 
 .page {
   min-height: 100vh;
   width: 100%; }
+
+@keyframes fading-tagline {
+  0% {
+    opacity: 0; }
+  5% {
+    opacity: 0; }
+  15% {
+    opacity: 1; }
+  90% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
 
 #resume {
   background-color: white;
@@ -376,6 +436,7 @@ nav {
       justify-content: space-around;
       height: 6vh; } }
   nav a {
+    outline: none;
     margin-bottom: 200%;
     position: relative;
     height: 100%;

@@ -1,31 +1,49 @@
 import './styles/css/style.css'
-import NavBar from './components/Nav'
-import { useNavigate } from "react-router-dom"
-import { useEffect } from "react";
-import { faHome, faArrowRight} from '@fortawesome/free-solid-svg-icons'
-import { faGithubSquare, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
+import {NavBar, SmartLink} from './components/Nav'
+import { useNavigate, Link as RouterLink} from "react-router-dom"
+import { useEffect, useState } from "react";
+import { faHome, faArrowRight, faFileInvoice} from '@fortawesome/free-solid-svg-icons'
+import { faGithubSquare, faLinkedin, faGithub, faLinkedinIn} from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Accessibility from './components/Accessibility';
 
 function App(props) {
   useEffect(() => {
       ScrollCache();
   }, []);
   let taglines = [
-    'I can code if you\'re not watching',
-    'Look ma, I\'m on TV',
-    'This is a pre-recorded message',
-    'I think therefore I think',
-    '// TODO: Make website',
-    'This is a secret (Don\'t tell anyone)',
-    'Made you look',
-    'I dare you to look at the source code',
-    'There isn\'t enough room in this <h2> for the two of us',
-    'It was due today?'
-
+    <span key={1} className='tagline'>I swear it was just working</span>,
+    <span key={2} className='tagline'>This is a pre-recorded message</span>,
+    <span key={3} className='tagline'>I think therefore I think</span>,
+    <span key={4} className='tagline'><i>// TODO</i>: Make website </span>,
+    <span key={5} className='tagline'>Made you look</span>,
+    <span key={6} className='tagline'>I dare you to look at the source code</span>,
+    <span key={7} className='tagline'>There isn't enough room in this <i>{"<h2>"}</i> for the two of us</span>,
+    <span key={8} className='tagline'>It was due today?</span>,
+    <span key={9} className='tagline'>[<i>"hip"</i>, <i>"hip"</i>]</span>,
+    <span key={10} className='tagline'><i>// FIXME</i>: Call an exterminator</span>,
+    <span key={11} className='tagline'>console.<i>log</i>(<i>"here 1234"</i>);</span>
   ];
-  if (new Date().getDay() != 5) {
-    taglines.push('Today is not Friday');
+  let usedTaglines = [];
+  if (new Date().getDay() !== 5) {
+    taglines.push(<span key={0} className='tagline'>Today is not Friday</span>);
   }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTagline(selectTagline());
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+  function selectTagline() {
+    let tagline = taglines.splice(Math.floor(Math.random() * taglines.length), 1);
+    usedTaglines.push(tagline);
+    if (taglines.length === 0) {
+      taglines = usedTaglines;
+      usedTaglines = [];
+    }
+    return tagline;
+  }
+  const [tagline, setTagline] = useState(selectTagline());
   return (
     <div className="App">
       <Page color='#111'>
@@ -33,13 +51,23 @@ function App(props) {
         </header>
         <NavBar links={[{ link: '/', icon: faHome },
           { link: 'https://github.com/JamFactoryInc', icon: faGithubSquare },
-          { link: 'https://www.linkedin.com/in/jamfactoryinc/', icon: faLinkedin }]} />
+          { link: 'https://www.linkedin.com/in/jamfactoryinc/', icon: faLinkedin },
+          { link: '/resume', icon: faFileInvoice }]} />
         <h1>Hey, I'm <i>Kieran</i></h1>
-        <h2>{taglines[Math.floor(Math.random() * taglines.length)]}</h2>
+        <h2  >{tagline}</h2>
       </Page>
       {<Disclaimer />}
       <Page color='#0C0C0C'>
         <div id="projects">
+          <h3>About Me</h3>
+          <section>
+          </section>
+          <h3>Links</h3>
+          <section id='links'>
+            <Link name='Resume' href='/resume' icon={faFileInvoice} />
+            <Link name='Github' href='https://github.com/JamFactoryInc' icon={faGithub} />
+            <Link name='Linkedin' href='https://www.linkedin.com/in/jamfactoryinc/' icon={faLinkedinIn} />
+          </section>
           <h3>Projects</h3>
           <div id='gallery'>
             <ProjectCard
@@ -111,6 +139,12 @@ function App(props) {
   );
 }
 
+function Link({ name, href = '', icon }) {
+  return (
+    <SmartLink className='link' href={href}>{name}<FontAwesomeIcon icon={icon} /></SmartLink>
+  )
+}
+
 function Disclaimer(props) {
   return (
     <div id='disclaimer' style={{maxWidth:'100%', color:'#222', fontSize:'70%', padding:'0 10%', textAlign:'center'}}>
@@ -131,16 +165,16 @@ function ProjectCard({ description, title, link, tags, show, githubLink }) {
   const navigate = useNavigate();
   if (show && githubLink) {
     gihubButton = (
-      <a className='project-tile-github' href={show ? githubLink : '/'} target='_blank'>
+      <a className='project-tile-github' href={show ? githubLink : '/'} tabIndex={Accessibility.tabIndex(title + '-github') + 1}  target='_blank'>
         <p>
           View on GitHub
         </p>
-        <FontAwesomeIcon icon={faGithub} />
+        <FontAwesomeIcon icon={faGithubSquare} />
       </a>)
   }
     return (
       <div className="project-tile">
-        <div className='card' onClick={(show ? () => navigate(link): () => { })}>
+        <RouterLink className='card' to={show ? link : '/'} tabIndex={show ? (Accessibility.tabIndex(title) - 1) : -1} /*onClick={(show ? () => navigate(link): () => { })}*/>
           <div >
             <h3 className="project-title">
               {title}
@@ -150,12 +184,18 @@ function ProjectCard({ description, title, link, tags, show, githubLink }) {
               {show ? description : "This project is not complete or not added to this website yet"}
             </p>
           </div>
-        </div>
+        </RouterLink>
         {gihubButton}
         <div className='tags'>
           {
             tags.map((tag, i) => {
-              return (<span key={i} onClick={() => { navigate(link + '#' + tag.toLowerCase()) }} className={'tag' + (show ? '' : ' disabled')} style={show ? {} : { background: 'gray' }}>{tag}</span>)
+              return (
+                <span key={i}
+                  onClick={show ? () => { navigate(link + '#' + tag.toLowerCase()) } : () => { }}
+                  className={'tag' + (show ? '' : ' disabled')}
+                  style={show ? {} : { background: 'gray' }}>
+                  {tag}
+                </span>)
             })
           }
         </div>

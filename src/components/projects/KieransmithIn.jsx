@@ -5,7 +5,7 @@ function KieransmithIn() {
 
     return (
         <Project>
-            <Header title='kieransmith.in' subtitle="It's been a long journey" />
+            <Header title={<span>kieransmith<i>.in</i></span>} subtitle="It's been a long journey" />
             <Section title='My portfolio'
                 technology='javascript'
                 content={`
@@ -18,8 +18,7 @@ I've been working on it since then, improving it over time in various ways so th
             </Section>
             <Section title='Version Three' technology='javascript' content={
 `
-I see you noticed that this is version three and may wonder where the first two are. They are lost to the sands of time and have long-since been deleted from codepen.io due to embarassment.
-    They looked very much like they were developed by a CSS-happy highschool student, so I'll give you some time to transport yourself to 2005 and remember the eyesore that was a homemade webpage.
+I see you noticed that this is version three and may wonder where the first two are. They are lost to the sands of time and have long-since been deleted from codepen.io.
 
 I'd learned a few things in my first two attempts, namely that whitespace is useful, and that there exists a concept of responsive design.
     A sprinkle of jQuery here, some embeds there, and I had a website that looked okay.
@@ -27,9 +26,9 @@ I'd learned a few things in my first two attempts, namely that whitespace is use
             }>
                 <AsyncImage src='https://i.imgur.com/PvfbKNE.png'/>
                 <CodeBrowser pages={[
-                    { title: 'index.html', link: 'https://raw.githubusercontent.com/JamFactoryInc/first-portfolio-site/main/html/index.html' },
-                    { title: 'index.css', link: 'https://raw.githubusercontent.com/JamFactoryInc/first-portfolio-site/main/css/index.css' },
-                    { title: 'index.js', link: 'https://raw.githubusercontent.com/JamFactoryInc/first-portfolio-site/main/js/index.js' }]} />
+                    { title: 'index.html', lang : 'html', link: 'https://raw.githubusercontent.com/JamFactoryInc/first-portfolio-site/main/html/index.html' },
+                    { title: 'index.css', lang: 'css', link: 'https://raw.githubusercontent.com/JamFactoryInc/first-portfolio-site/main/css/index.css' },
+                    { title: 'index.js', lang: 'js', link: 'https://raw.githubusercontent.com/JamFactoryInc/first-portfolio-site/main/js/index.js' }]} />
             </Section>
             <Section title='wow' technology='react.js' content='nice'>
                 <Section title='wow' content='nice'></Section>

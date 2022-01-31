@@ -1,14 +1,20 @@
 import '../styles/css/style.css';
 import React, { useEffect, useState, Component} from 'react';
-import NavBar from './Nav'
+import {NavBar} from './Nav'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { faGithubSquare } from '@fortawesome/free-brands-svg-icons'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import js from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
+import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
+import css from 'react-syntax-highlighter/dist/esm/languages/prism/css';
+import html from 'react-syntax-highlighter/dist/esm/languages/prism/markup';
 import { vscDarkPlus as sourceTheme } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import Spinner from './Spinner';
 
 SyntaxHighlighter.registerLanguage('javascript', js);
+SyntaxHighlighter.registerLanguage('html', html);
+SyntaxHighlighter.registerLanguage('jsx', jsx);
+SyntaxHighlighter.registerLanguage('css', css);
 
 function BackButton() {
     return (
@@ -68,7 +74,7 @@ class CodeBrowser extends Component {
                         })
                     }
                 </div>
-                <Code source={this.state.pages[this.state.selectedPage].link} />
+                <Code source={this.state.pages[this.state.selectedPage].link} lang={this.state.pages[this.state.selectedPage].lang} />
             </div>
         )
     }
@@ -104,7 +110,7 @@ function Code(props){
     let loadedContent = <Spinner />
     if (data && data === CodeBrowser.cachedContent[props.source]) {
         loadedContent = <pre>
-            <SyntaxHighlighter language="javascript" style={sourceTheme} >
+            <SyntaxHighlighter language={props.lang} style={sourceTheme} >
                 {data}
             </SyntaxHighlighter>
         </pre>

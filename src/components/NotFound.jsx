@@ -1,4 +1,4 @@
-import NavBar from './Nav'
+import {NavBar} from './Nav'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 
 let taglines = [
@@ -8,7 +8,6 @@ let taglines = [
 ];
 
 function NotFound() {
-    
     return (
         <div>
             <NavBar links={[{ link: '/', icon: faHome }]} />

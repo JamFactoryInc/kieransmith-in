@@ -1,0 +1,74 @@
+@import "vars";
+* {
+    text-decoration: none;
+}
+
+#projects {
+    position: relative;
+    font-weight: 100;
+    align-content: center;
+    margin-top: 20px;
+    width: 80vw;
+    margin: auto;
+    h3 {
+        width: 100%;
+        position: relative;
+        padding-top: 1em;
+        font-size: 75%;
+        font-weight: 700;
+        color: $raspberry;
+    }
+    #gallery {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        .project-title {
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            font-size: 50%;
+            color: $v-light-gray;
+            transition: color 0.2s;
+        }
+        .project-tile {
+            .exlink-arrow {
+                position: absolute;
+                right: 0;
+                height: 100%;
+                color: $gray;
+                transition: color 0.2s, transform 0.2s;
+            }
+            width: 48%;
+            margin-bottom: 2%;
+            img {
+                display: none;
+            }
+            p {
+                font-size: 50%;
+            }
+            .tags {
+                display: flex;
+                flex-wrap: wrap;
+                .tag {
+                    font-size: 40%;
+                    background-color: $raspberry;
+                    padding: 1% 2%;
+                    margin: 1% 1.5% 1% 0;
+                    color: $v-dark-gray;
+                    font-weight: 500;
+                    border-radius: 1000px;
+                    transition: transform 0.2s, background-color 0.2s;
+                    &:not(.disabled) {
+                        cursor: pointer;
+                        &:hover {
+                            transform: scale(1.05);
+                            background-color: $raspberry-light;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
